@@ -1,12 +1,11 @@
 #!/bin/bash
-export TMPDIR=/home/djia/tmpdir
-
-NDK=/home/djia/android/android-ndk-r10
-SYSROOT=$NDK/platforms/android-16/arch-x86/
-TOOLCHAIN=/home/djia/android/android-ndk-r10/toolchains/x86-4.9/prebuilt/linux-x86_64
+export TMPDIR=/tmp
+NDK=~/Android/Sdk/ndk-bundle
+SYSROOT=$NDK/platforms/android-21/arch-x86/
+TOOLCHAIN=$NDK/toolchains/x86-4.9/prebuilt/linux-x86_64
 
 CPU=x86
-PREFIX=/root/workspace/ffmpeg_shared_compile/dxjia_ffmpeg_install/x86/
+PREFIX=$(pwd)/android1/$CPU
 
 function build_one
 {
@@ -24,15 +23,15 @@ function build_one
   --enable-small \
   --disable-yasm \
   --cross-prefix=$TOOLCHAIN/bin/i686-linux-android- \
-  --target-os=linux \
+  --target-os=android \
   --arch=x86 \
   --enable-cross-compile \
   --sysroot=$SYSROOT \
   --extra-cflags="-Os -fpic" \
-$ADDITIONAL_CONFIGURE_FLAG
-make clean
-make
-make install
+    $ADDITIONAL_CONFIGURE_FLAG
+    make clean
+    make -j8
+    make install
 }
 
 build_one

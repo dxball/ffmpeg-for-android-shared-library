@@ -1,11 +1,11 @@
 #!/bin/bash
-export TMPDIR=/home/djia/tmpdir
-NDK=/home/djia/android/android-ndk-r10
-SYSROOT=$NDK/platforms/android-16/arch-arm/
-TOOLCHAIN=/home/djia/android/android-ndk-r10/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64
+export TMPDIR=/tmp
+NDK=~/Android/Sdk/ndk-bundle
+SYSROOT=$NDK/platforms/android-21/arch-arm/
+TOOLCHAIN=$NDK/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64
 
 CPU=arm
-PREFIX=/root/workspace/ffmpeg_shared_compile/dxjia_ffmpeg_install/arm/
+PREFIX=$(pwd)/android1/$CPU
 ADDI_CFLAGS="-marm"
 
 function build_one
@@ -23,7 +23,7 @@ function build_one
 --disable-symver \
 --enable-small \
 --cross-prefix=$TOOLCHAIN/bin/arm-linux-androideabi- \
---target-os=linux \
+--target-os=android \
 --arch=arm \
 --enable-cross-compile \
 --sysroot=$SYSROOT \
@@ -31,7 +31,7 @@ function build_one
 --extra-ldflags="$ADDI_LDFLAGS" \
 $ADDITIONAL_CONFIGURE_FLAG
 make clean
-make
+make -j8
 make install
 }
 
