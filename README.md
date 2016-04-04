@@ -1,6 +1,6 @@
 # ffmpeg for android shared library
   移植ffmpeg到android，编译可用于jni调用的so库.<br>
-  编译出的so在android apk中的使用参考我的另一个项目[ffmpeg_jni_sample](https://github.com/tainzhi/ffmpeg_jni_example)
+  编译出的so在android apk中的使用参考我的另一个项目[ffmpeg-jni-sample](https://github.com/tainzhi/ffmpeg-jni-example)
 
 ## 环境
   ubuntu ubuntu15.10_64<br>
