@@ -5,7 +5,7 @@ SYSROOT=$NDK/platforms/android-21/arch-x86/
 TOOLCHAIN=$NDK/toolchains/x86-4.9/prebuilt/linux-x86_64
 
 CPU=x86
-PREFIX=$(pwd)/android1/$CPU
+PREFIX=$(pwd)/android/$CPU
 
 function build_one
 {

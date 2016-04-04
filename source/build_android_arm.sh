@@ -5,7 +5,7 @@ SYSROOT=$NDK/platforms/android-21/arch-arm/
 TOOLCHAIN=$NDK/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64
 
 CPU=arm
-PREFIX=$(pwd)/android1/$CPU
+PREFIX=$(pwd)/android/$CPU
 ADDI_CFLAGS="-marm"
 
 function build_one
